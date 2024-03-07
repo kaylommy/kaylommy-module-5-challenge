@@ -4,11 +4,7 @@
 $(document).ready(function(){
 var saveBtn = $('.saveBtn')
 var userInput = $('.description')
-function currentDate() {
-  var currentDay = dayjs().format('dddd, MMMM DD');
-  $('#currentDay').text(currentDay)
-};
-currentDate();
+
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -25,7 +21,8 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-  const currentHour = dayjs().hour();
+    const currentHour = dayjs().hour();
+    console.log(currentHour)
   $('.time-block').each(function(){
     const blockHour = parseInt($(this).attr('id'));
     if (blockHour === currentHour){
@@ -35,6 +32,7 @@ $(function () {
     }else if (blockHour > currentHour){
       $(this).addClass('future');
     }
+    console.log(blockHour)
   }); 
   
   // TODO: Add code to get any user input that was saved in localStorage and set
@@ -42,5 +40,10 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+  function currentDate() {
+    var currentDay = dayjs().format('dddd, MMMM DD');
+    $('#currentDay').text(currentDay)
+  };
+  currentDate();
 });
 });
